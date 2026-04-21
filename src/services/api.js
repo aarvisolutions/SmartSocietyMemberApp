@@ -42,9 +42,9 @@ export const getMemberApi = async (memberId) => {
   const [memberRes, loanBalRes, depositsRes, loansRes] = await Promise.allSettled([
     api.get(`api/members/${memberId}`),
     api.get(`api/members/${memberId}/loan-balances`),
-    api.get(`api/members/${memberId}/deposits`),
-    api.get(`api/loans/master/member/${memberId}`),
-  ]);
+    api.get(`api/members/${memberId}/deposits`), 
+    api.get(`api/members/active-loans/${memberId}`)
+  ]); 
 
   const member   = memberRes.status   === 'fulfilled' ? unwrap(memberRes.value)       : {};
   const loanBal  = loanBalRes.status  === 'fulfilled' ? unwrap(loanBalRes.value)       : {};
