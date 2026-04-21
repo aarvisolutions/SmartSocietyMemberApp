@@ -7,15 +7,30 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#1e3a8a"
     },
     "android": {
       "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#1e3a8a"
       },
-      "package": "com.smartsociety.memberapp"
+      "package": "com.smartsociety.memberapp",
+      "permissions": [
+        "DETECT_SCREEN_CAPTURE"
+      ],
+      "jsEngine": "jsc"
     },
-    "platforms": ["android", "ios"]
+    "platforms": [
+      "android",
+      "ios"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "e6112c5d-bdb3-4420-80d1-a4cf7daafc69"
+      }
+    },
+    "owner": "praveenkumar.koilakanda"
   }
 }
