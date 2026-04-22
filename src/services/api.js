@@ -88,20 +88,20 @@ export const getMemberApi = async (memberId) => {
   };
 };
 
-export const sendOtpApi = async (memberId) => {
-  const response = await api.post('api/auth/send-otp', { memberId: String(memberId) });
+export const sendOtpApi = async (memberId) => { 
+  const response = await api.post('api/member-login/generate-otp', { usernameOrMobileNumber: String(memberId) });
   return response.data?.data ?? response.data;
 };
 
 export const verifyOtpApi = async (memberId, otp) => {
-  const response = await api.post('api/auth/verify-otp', {
-    memberId: String(memberId),
-    otp: String(otp),
+  const response = await api.post('api/member-login/verify-otp', {
+    mobileNumber: String(memberId),
+    otp: String(otp), 
   });
   const data = response.data?.data ?? response.data;
   return {
     token:    data.token    ?? data.accessToken,
-    memberId: data.memberId ?? data.user?.memberId ?? memberId,
+    memberId: data.username ?? data.user?.username ?? memberId,
   };
 };
 
