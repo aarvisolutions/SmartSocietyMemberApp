@@ -10,6 +10,7 @@ import {
   Platform,
   ScrollView,
   Alert,
+  Image,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { loginApi, sendOtpApi, verifyOtpApi } from '../services/api';
@@ -166,9 +167,9 @@ const LoginScreen = ({ navigation }) => {
         {/* ── Header ── */}
         <View style={styles.header}>
           <View style={styles.logoCircle}>
-            <Text style={styles.logoIcon}>🏛️</Text>
+            <Image source={require('../../assets/icon.png')} style={styles.logoIcon} resizeMode="contain" />
           </View>
-          <Text style={styles.appName}>Smart Society</Text>
+          <Text style={styles.appName}>EPFO Smart Society</Text>
           <Text style={styles.tagline}>Member Portal</Text>
         </View>
 
@@ -266,18 +267,18 @@ const LoginScreen = ({ navigation }) => {
               </Text>
               <Text style={styles.cardSubtitle}>
                 {otpSent
-                  ? `OTP sent to Member ID ${maskId(otpMemberId)}`
+                  ? `OTP sent to Mobile Number ${maskId(otpMemberId)}`
                   : "We'll send a one-time password to your registered mobile"}
               </Text>
 
-              {/* Step 1: Member ID input */}
+              {/* Step 1: Mobile Number input */}
               <View style={styles.fieldGroup}>
-                <Text style={styles.fieldLabel}>MEMBER ID</Text>
+                <Text style={styles.fieldLabel}>Mobile Number</Text>
                 <View style={[styles.inputWrapper, !!otpIdError && styles.inputError]}>
                   <Text style={styles.inputIcon}>👤</Text>
                   <TextInput
                     style={styles.input}
-                    placeholder="Enter your Member ID"
+                    placeholder="Enter your Mobile Number"
                     placeholderTextColor="#94a3b8"
                     value={otpMemberId}
                     onChangeText={(t) => { setOtpMemberId(t); setOtpIdError(''); }}
@@ -380,7 +381,7 @@ const LoginScreen = ({ navigation }) => {
           )}
         </View>
 
-        <Text style={styles.footer}>Smart Society Financial System © 2025</Text>
+        <Text style={styles.footer}>EPFO Smart Society Financial System © 2026</Text>
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -402,17 +403,17 @@ const styles = StyleSheet.create({
     width: 76,
     height: 76,
     borderRadius: 38,
-    backgroundColor: '#1e3a8a',
+    backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 14,
-    shadowColor: '#2563eb',
+    shadowColor: '#ffffff',
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.4,
     shadowRadius: 16,
     elevation: 10,
   },
-  logoIcon: { fontSize: 34 },
+  logoIcon: { width: 48, height: 48 },
   appName: { fontSize: 26, fontWeight: '800', color: '#ffffff', letterSpacing: 0.5, marginBottom: 4 },
   tagline: { fontSize: 13, color: '#94a3b8', fontWeight: '500', letterSpacing: 1.5, textTransform: 'uppercase' },
 
@@ -434,8 +435,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   toggleBtnActive: {
-    backgroundColor: '#2563eb',
-    shadowColor: '#2563eb',
+    backgroundColor: '#d32f2f',
+    shadowColor: '#d32f2f',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.35,
     shadowRadius: 6,
@@ -512,13 +513,13 @@ const styles = StyleSheet.create({
 
   // ── Buttons ──
   primaryBtn: {
-    backgroundColor: '#2563eb',
+    backgroundColor: '#d32f2f',
     borderRadius: 12,
     height: 52,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 8,
-    shadowColor: '#2563eb',
+    shadowColor: '#d32f2f',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.4,
     shadowRadius: 12,
@@ -530,8 +531,8 @@ const styles = StyleSheet.create({
   // ── Resend / Timer ──
   resendRow: { alignItems: 'center', marginTop: 16 },
   timerText: { fontSize: 13, color: '#64748b' },
-  timerCount: { color: '#60a5fa', fontWeight: '700' },
-  resendText: { fontSize: 13, color: '#2563eb', fontWeight: '700' },
+  timerCount: { color: '#d32f2f', fontWeight: '700' },
+  resendText: { fontSize: 13, color: '#d32f2f', fontWeight: '700' },
 
   // ── Footer ──
   footer: { marginTop: 32, fontSize: 11, color: '#334155', textAlign: 'center' },

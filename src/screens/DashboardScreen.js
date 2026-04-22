@@ -507,7 +507,7 @@ const DashboardScreen = ({ route, navigation }) => {
         <View style={s.topBar}>
           <View style={s.brandRow}>
             <View style={s.brandDot} />
-            <Text style={s.brandTxt}>Smart Society</Text>
+            <Text style={s.brandTxt}>EPFO Smart Society</Text>
           </View>
           <TouchableOpacity style={s.signBtn} onPress={handleLogout} activeOpacity={0.75}>
             <Text style={s.signTxt}>Sign Out</Text>
